@@ -1,0 +1,5 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "HopeRF")(type "KiCad")(uri "${KIPRJMOD}/HopeRF.kicad_sym")(options "")(descr ""))
+  (lib (name "ME6118")(type "KiCad")(uri "${KIPRJMOD}/ME6118.kicad_sym")(options "")(descr ""))
+)
