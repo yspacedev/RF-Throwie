@@ -1,13 +1,17 @@
 ## About
 The RF throwie is an ultra-cheap sub-GHz transmitter using the CMOSTek/HopeRF CMT2119A RF transmitter and CH32V003 32-bit RISC-V microcontroller. 
 
+Called a "throwie" because it's designed to be cheap enough (almost disposable) that you can throw it anywhere for a foxhunt or other RF application.
+
 The CMT2119A supports (G)FSK/OOK modulation and a tuning range of 157MHz - 1297MHz (according to G4EML). While it's meant to be configured with CMOSTek's RFPDK and their proprietary software, it can be configured in-situ though a 2-wire interface that writes to registers on the chip. The registers have been partly reverse engineered in https://github.com/g4eml/RP2040_Synth, and this project aims to reverse engineer them more fully. The CMT2119A can also be used as a general-purpose frequency synthesizer, which opens up a lot of possibilities for cheap SDRs and custom RF frontends. It may also be able to do more advanced modulation through more direct control. Perhaps it can generate LoRa chirps (and thus LoRa) by adjusting the PLL live and/or abusing GFSK.
 
 The CH32V003 is programmed with cnlohr's ch32fun stack and uses bitbanging to generate the TWI signals. (software currently in development since I don't have boards yet)
 
 The RF throwie board itself supports an input voltage of 3.7v - 18v, and has an onboard LED and the CH32V003 UART interface exposed. For the RF chip, there's a up to 7th order LC filter and matching network feeding an SMA connector or simple wire antenna.
 
-(Board pictures)
+![Board Front](https://github.com/yspacedev/RF-Throwie/blob/master/resources/RF%20Throwie%20Front.png)
+![Board Back](https://github.com/yspacedev/RF-Throwie/blob/master/resources/RF%20Throwie%20Back.png)
+
 
 ## Tuning
 
