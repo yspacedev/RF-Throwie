@@ -1613,6 +1613,192 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "Jumper:SolderJumper_2_Open"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom no)
+			(on_board yes)
+			(property "Reference" "JP"
+				(at 0 2.032 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "SolderJumper_2_Open"
+				(at 0 -2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "~"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Solder Jumper, 2-pole, open"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "solder jumper SPST"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "SolderJumper*Open*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "SolderJumper_2_Open_0_1"
+				(polyline
+					(pts
+						(xy -0.254 1.016) (xy -0.254 -1.016)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start -0.254 -1.016)
+					(mid -1.2656 0)
+					(end -0.254 1.016)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start -0.254 -1.016)
+					(mid -1.2656 0)
+					(end -0.254 1.016)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(arc
+					(start 0.254 1.016)
+					(mid 1.2656 0)
+					(end 0.254 -1.016)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start 0.254 1.016)
+					(mid 1.2656 0)
+					(end 0.254 -1.016)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.254 1.016) (xy 0.254 -1.016)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "SolderJumper_2_Open_1_1"
+				(pin passive line
+					(at -3.81 0 0)
+					(length 2.54)
+					(name "A"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 3.81 0 180)
+					(length 2.54)
+					(name "B"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "MCU_WCH_CH32V0:CH32V003FxUx"
 			(exclude_from_sim no)
 			(in_bom yes)
@@ -2765,7 +2951,7 @@
 		)
 		(uuid "924ec1f6-82b3-44f7-8d2a-0d945905f594")
 	)
-	(text "To create matching network,\nuse https://home.sandiego.edu/~ekim/e194rfs01/jwmatcher/matcher2.html to calculate the first stage\nand https://markimicrowave.com/technical-resources/tools/lc-filter-design-tool/ to generate the rest of the filter"
+	(text "To create matching network,\nuse https://home.sandiego.edu/~ekim/e194rfs01/jwmatcher/matcher2.html to calculate the first stage (L2+C2)\nand https://markimicrowave.com/technical-resources/tools/lc-filter-design-tool/ to generate the rest of the filter"
 		(exclude_from_sim no)
 		(at 216.662 129.794 0)
 		(effects
@@ -2774,6 +2960,16 @@
 			)
 		)
 		(uuid "a0daefba-e4e4-46fd-8271-3150baa5d0b9")
+	)
+	(text "C7 for additional filtering"
+		(exclude_from_sim no)
+		(at 239.776 36.576 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "b40049d5-36d3-45c2-b5ec-c154c4cf73f6")
 	)
 	(text "Short L3 and L2 for lower cost"
 		(exclude_from_sim no)
@@ -2784,6 +2980,16 @@
 			)
 		)
 		(uuid "bfd8529d-7669-4c76-905f-111da6a69d5c")
+	)
+	(text "Optionally tie lines together to use as CMT2119 breakout"
+		(exclude_from_sim no)
+		(at 99.568 18.542 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "daa0ef50-ffe8-472d-8c39-a3ef7ac2c0cd")
 	)
 	(text "Values from 915MHz FCC/ETSI Compatible Application"
 		(exclude_from_sim no)
@@ -3247,6 +3453,28 @@
 	)
 	(global_label "CLK"
 		(shape input)
+		(at 95.25 30.48 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "148b6dab-7a91-4f84-b391-7782207c1f52")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 88.6967 30.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "CLK"
+		(shape input)
 		(at 77.47 69.85 180)
 		(fields_autoplaced yes)
 		(effects
@@ -3399,6 +3627,28 @@
 			)
 		)
 	)
+	(global_label "TX"
+		(shape input)
+		(at 102.87 30.48 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "905e8af8-5dce-4657-addc-d437e42b9d14")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 108.0323 30.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
 	(global_label "DATA"
 		(shape input)
 		(at 168.91 60.96 180)
@@ -3434,6 +3684,50 @@
 		(uuid "c5459e24-8767-4c58-a2a3-016fa577992a")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 103.2547 82.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "DATA"
+		(shape input)
+		(at 95.25 27.94 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "df28bf24-8672-4151-9905-00fc8f779dac")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 87.85 27.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "RX"
+		(shape input)
+		(at 102.87 27.94 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "e19af838-5f0b-42fd-9649-3252d85805a5")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 108.3347 27.94 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3619,6 +3913,75 @@
 			(project "RF Throwie!"
 				(path "/01e6dee0-4d32-4b21-b740-85fb3a4879a1"
 					(reference "#PWR01")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Jumper:SolderJumper_2_Open")
+		(at 99.06 30.48 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "0e987151-c52f-46ef-8d31-5dd3a29b0d3d")
+		(property "Reference" "JP2"
+			(at 99.06 24.13 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "SolderJumper_2_Open"
+			(at 99.06 26.67 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "Jumper:SolderJumper-2_P1.3mm_Open_RoundedPad1.0x1.5mm"
+			(at 99.06 30.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 99.06 30.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Solder Jumper, 2-pole, open"
+			(at 99.06 30.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "013cca64-91a5-4939-b51c-5f919bea4a1f")
+		)
+		(pin "2"
+			(uuid "27928ee7-f0d1-4e89-b21f-454299ec899a")
+		)
+		(instances
+			(project "RF Throwie!"
+				(path "/01e6dee0-4d32-4b21-b740-85fb3a4879a1"
+					(reference "JP2")
 					(unit 1)
 				)
 			)
@@ -4538,6 +4901,75 @@
 			(project ""
 				(path "/01e6dee0-4d32-4b21-b740-85fb3a4879a1"
 					(reference "U2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Jumper:SolderJumper_2_Open")
+		(at 99.06 27.94 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "5221bd98-ba63-44d3-9a8a-b306de1b90e0")
+		(property "Reference" "JP1"
+			(at 99.06 21.59 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "SolderJumper_2_Open"
+			(at 99.06 24.13 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "Jumper:SolderJumper-2_P1.3mm_Open_RoundedPad1.0x1.5mm"
+			(at 99.06 27.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 99.06 27.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Solder Jumper, 2-pole, open"
+			(at 99.06 27.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "f30b9666-780e-4425-8064-3ca51df35861")
+		)
+		(pin "2"
+			(uuid "5528b904-dd1b-4d03-ac8c-e583d4a4c970")
+		)
+		(instances
+			(project ""
+				(path "/01e6dee0-4d32-4b21-b740-85fb3a4879a1"
+					(reference "JP1")
 					(unit 1)
 				)
 			)

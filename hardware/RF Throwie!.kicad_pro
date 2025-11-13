@@ -58,7 +58,16 @@
           "width": 0.0
         }
       ],
-      "drc_exclusions": [],
+      "drc_exclusions": [
+        [
+          "lib_footprint_mismatch|133190000|83940000|1664e5ff-9c8d-48f0-b8a9-d0c9cefa6492|00000000-0000-0000-0000-000000000000",
+          "Modified to remove silscreen lines"
+        ],
+        [
+          "lib_footprint_mismatch|150350000|92150000|ced84d0c-1aed-4e81-b595-5eaa51eb2a10|00000000-0000-0000-0000-000000000000",
+          "Modified to add 2.54mm spaced pins"
+        ]
+      ],
       "meta": {
         "version": 2
       },
