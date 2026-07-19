@@ -1,0 +1,38 @@
+[
+ {
+  "directory": "/mnt/common/Projects/RF Throwie!/software",
+  "arguments": [
+   "riscv64-unknown-elf-gcc",
+   "-o",
+   "blink.elf",
+   "/mnt/common/ch32fun/ch32fun/ch32fun//ch32fun.c",
+   "blink.c",
+   "-g",
+   "-Os",
+   "-flto",
+   "-ffunction-sections",
+   "-fdata-sections",
+   "-fmessage-length=0",
+   "-msmall-data-limit=8",
+   "-march=rv32ec",
+   "-mabi=ilp32e",
+   "-DCH32V003",
+   "-static-libgcc",
+   "-I/usr/include/newlib",
+   "-I/mnt/common/ch32fun/ch32fun/ch32fun//../extralibs",
+   "-I/mnt/common/ch32fun/ch32fun/ch32fun/",
+   "-nostdlib",
+   "-I.",
+   "-Wall",
+   "-Wl,--print-memory-usage",
+   "-Wl,-Map=blink.map",
+   "-L/mnt/common/ch32fun/ch32fun/ch32fun//../misc",
+   "-lgcc",
+   "-lgcc",
+   "-T",
+   "/mnt/common/ch32fun/ch32fun/ch32fun//generated__.ld",
+   "-Wl,--gc-sections"
+  ],
+  "file": "blink.c"
+ }
+]

@@ -1,4 +1,4 @@
-26237371244136349
+26240898664096522
 Audio_Module
 Reverb_BTDR-1H
 Digital Reverberation Unit, http://www.belton.co.kr/inc/downfile.php?seq=17&file=pdf (footprint from http://www.uk-electronic.de/PDF/BTDR-1.pdf)
@@ -91692,6 +91692,13 @@ Potentiometer vertical vishay
 0
 3
 3
+QFN-custom
+QFN-128_EP_12.3x12.3_Pitch0.35mm
+
+
+0
+154
+129
 RF
 Skyworks_SKY13575_639LF
 http://www.skyworksinc.com/uploads/documents/SKY13575_639LF_203270D.pdf
@@ -104242,4 +104249,11 @@ Panasonic VF series varistor, 6x8mm body, 3.2mm height, https://mediap.industry.
 Varistor VF
 0
 2
+2
+opto-custom
+Laser Diode Side Mount 1 side 2 pin
+
+
+0
+4
 2
