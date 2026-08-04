@@ -1,0 +1,67 @@
+default values based on 431.1MHz, GFSK, 2.4kbps, 1kHz deviation, +13dBm
+register 0: reset value 0x007F
+    - [15:0] 0x007F RESERVED
+register 1: reset value 0x1000
+    - [15] RESERVED
+    - [14] rising edge transmission start
+    - [13:11] RESERVED
+    - [10] prescale2 enable (divide VCO output frequency by 2)
+    - [9:0] RESERVED
+register 2: reset value 0x0000
+    - [15:0] 0x0000 RESERVED
+register 3: reset value 0x0000
+    - [15:0] 0x0000 RESERVED
+register 4: reset value 0x0000
+    - [15:0] 0x0000 RESERVED
+register 5: reset value 0xF000
+    - [15:0] 0x000F RESERVED
+register 6: reset value 0x0000
+    - [15:1] 0x0000 RESERVED
+    - [0] prescale15 enable (divide VCO output frequency by 1.5)
+register 7: reset value 0x0000
+    - [15:0] PLL divider low bits (must be an even number so the LSB is always 0)
+register 8: reset value 0x0000
+    - [15:8] PLL divider high bits
+    - [7:4] RESERVED
+    - [3] FSK/GFSK enable
+    - [2:0] TX stop low duration in increments of 10ms starting at 20ms to 90ms
+register 9: reset value 0x0000
+    - [15:10] RESERVED
+    - [9:0] FSK/GFSK deviation (value simply added to main divider when sending a '1', calculate in same way as the normal PLL divider)
+register 10: reset value 0x2400
+    - [15] enables GFSK
+    - [14] enables data representation inversion for FSK and GFSK
+    - [13:1] RESERVED
+    - [0] rising edge transmission start
+register 11: reset value 0x0000
+    - [15] 0x0 RESERVED
+    - [14:0] GFSK rate reciprocal (reg=10769485/rate(bps)) (constant found by using average slope across several samples) (does not appear to affect behavior in non-GFSK modes)
+register 12: reset value 0x8000
+    - [15:9] RESERVED
+    - [8:0] PA ramping time (reg=floor(3t/8)-2 for t<=128us, reg=floor(95t/256) for t>=256us)
+register 13: reset value 0x0000
+    - [15:5] RESERVED
+    - [4:0] power-related in OOK mode (normally 0x15 before 4dBm output then steps down by steps of one and two (probably will just use LUT)) (0x00 in FSK and GFSK)
+register 14: reset value 0xFFFF
+    - [15:0] 0xFFFF RESERVED
+register 15: reset value 0x0020
+    - [15:0] 0x0020 RESERVED
+register 16: reset value 0x4700
+    - [15:13] RESERVED
+    - [12:11] PA power band adjustment (bit 11 turns on above -5dBm, bit 12 turns on above 2dBm)
+    - [10:8] RESERVED
+    - [7:0] power field (needs LUT) (high nibble has a complicated pattern, low nibble seems to be a fine adjust of some kind)
+register 17: reset value 0x22D6
+    - [15] FSK/GFSK enable
+    - [14:13] RESERVED
+    - [12] XO current increase
+    - [11] RESERVED
+    - [10] XO current increase
+    - [9:8] RESERVED
+    - [7:0] RESERVED
+register 18: reset value 0x0E13
+    - [15:0] RESERVED
+register 19: reset value 0x0019
+    - [15:0] RESERVED
+register 20: reset value 0x0000
+    - [15:0] RESERVED

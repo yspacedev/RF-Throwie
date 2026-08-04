@@ -12,9 +12,7 @@
 
 #define TX_FREQ 432.1 //MHz
 
-const char* morse_string = "CALLSIGN TEST"; //replace with your own callsign or change TX_FREQ to an ISM band
-
-CMT2119_freq_set_t tx_freq;
+const char* morse_string = "KI5ZHW TEST"; //replace with your own callsign or change TX_FREQ to an ISM band
 
 //possibly rearrange to map better onto ascii
 const char* MORSE_ALPHABET[] = {
@@ -157,13 +155,26 @@ int main(){
 	init_tone_timer();
 	funPinMode(LED, FUN_OUTPUT);
 	funPinMode(PC2, GPIO_Speed_10MHz | GPIO_CNF_OUT_PP_AF);
-	CMT2119A_init(PC1, PC2, TX_FREQ); //use default frequency
-	CMT2119A_calcFrequency(TX_FREQ, &tx_freq);
+
+	CMT2119A_settings_t tx_settings = {
+		.freq_out_hz = 430100000,
+		.fsk_dev_hz = 2000,
+		.gfsk_rate_bps = 1600, //minimum required for 1khz tone in GFSK mode
+		.power_output_dbm = -10,
+		.modulation = MOD_FSK,
+		.off_time = OFF_90MS,
+		.pa_ramp_time = 0,
+		.rising_edge_start = true,
+		.invert_symbols = false,
+		.xo_current_boost = false,
+	};
+
+	CMT2119A_init(PC1, PC2, &tx_settings); //use default frequency
 
 	while(1)
 	{
 		funDigitalWrite(LED, FUN_LOW);
-		//CMT2119A_updateFreqOnly(&tx_freq); 
+		//CMT2119A_update(); 
 		//frequency can also be changed live, but transmitting the PLL parameters takes more time if we don't need to do so
 		TWI_reset();
 		Delay_Ms(2);
