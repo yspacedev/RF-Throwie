@@ -7,9 +7,7 @@ The CMT2119A supports (G)FSK/OOK modulation and a tuning range of 157MHz - 1297M
 
 ### Firmware
 
-The CH32V003 is programmed with cnlohr's ch32fun stack and uses bitbanging to generate the TWI signals. The current firmware transmits Morse code on the UHF ham radio band (70cm band) that can be picked up by an SDR using NBFM demodulation or a cheap handheld transciever like a Baofeng or Quansheng UV-K5. In theory more modulations are possible, including FSK-based modes like JT65. However, due to the long () setting time of the PLL synthesizer and coarse frequency resolution, phase modulation through frequency modulation is likely not possible with unmodified hardware. Maybe using dithering to feed the crystal input an adjustable average frequency will allow for finer frequency resolution as well as phase adjustment, but this has not been tested.
-
-JT-65 has not been tested, however, but I'm planning on making an example.
+The CH32V003 is programmed with cnlohr's ch32fun stack and uses bitbanging to generate the TWI signals. The current firmware transmits Morse code on the UHF ham radio band (70cm band) that can be picked up by an SDR using NBFM demodulation or a cheap handheld transciever like a Baofeng or Quansheng UV-K5. In theory more modulations are possible, including FSK-based modes like JT65. However, due to the long (370us) tuning time of the PLL synthesizer and coarse frequency resolution (200~400Hz), phase modulation through frequency modulation is likely not possible with unmodified hardware. Maybe using dithering to feed the crystal input an adjustable average frequency will allow for finer frequency resolution as well as phase adjustment, but this has not been tested.
 
 For development and compilation, you will need to set up CH32fun per the instructions on their github. If you use clangd or Microsoft Intellisense with VScode, those options are already set up, but you will need to change the path for the libraries or use `compiledb make` to generate the `compile_commands.json` file.
 
