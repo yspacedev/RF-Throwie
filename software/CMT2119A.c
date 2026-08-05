@@ -1,5 +1,6 @@
 #include "CMT2119A.h"
-#include "stdbool.h"
+#include "CMT2119A_TWI.h"
+
 
 //TODO: work on increasing frequency accuracy
 //TODO: test if PA ramp setting matters in FSK (doesn't as far as I can tell but I would need to view a time domain waveform to confirm)
@@ -114,13 +115,16 @@ void CMT2119A_setPArampTime(uint16_t us){
     CMT2119Aregs[12] = CMT2119Aresetvals[12] | (reg & 0x1FF);
 }
 
-void CMT2119A_setRisingEdgeStart(bool rising){
-    if (rising){
-        CMT2119Aregs[1] |= (1<<14);
-        CMT2119Aregs[10] |= (1<<0);
-    } else {
-        CMT2119Aregs[1] &= ~(1<<14);
-        CMT2119Aregs[10] &= ~(1<<0);
+void CMT2119A_setEdgeStart(enum CMT2119A_edge_start edge_start){
+    switch (edge_start){
+        case EDGE_RISING:
+            CMT2119Aregs[1] |= (1<<14);
+            CMT2119Aregs[10] |= (1<<0);
+            break;
+        case EDGE_FALLING:
+            CMT2119Aregs[1] &= ~(1<<14);
+            CMT2119Aregs[10] &= ~(1<<0);
+            break;
     }
 }
 
@@ -164,17 +168,17 @@ void CMT2119A_init(uint8_t clk_pin, uint8_t dat_pin, CMT2119A_settings_t *set){
     CMT2119A_setModulation(set->modulation);
     CMT2119A_setLowOffTime(set->off_time);
     CMT2119A_setPArampTime(set->pa_ramp_time);
-    CMT2119A_setRisingEdgeStart(set->rising_edge_start);
+    CMT2119A_setEdgeStart(set->edge_start);
     CMT2119A_setSymbolInversion(set->invert_symbols);
     CMT2119A_setCrystalCurrentBoost(set->xo_current_boost);
     CMT2119A_setGFSKrate(set->gfsk_rate_bps);
     CMT2119A_setFrequencyDev(set->freq_out_hz, set->fsk_dev_hz);
 
-    for(int i = 0;i<21;i++){
-        if (i>=7 && i <=9){
-            printf("register %d: %04x\r\n", i, CMT2119Aregs[i]);
-        }
-    }
+    // for(int i = 0;i<21;i++){
+    //     if (i>=7 && i <=9){
+    //         printf("register %d: %04x\r\n", i, CMT2119Aregs[i]);
+    //     }
+    // }
 
     CMT2119A_update();
 }
@@ -295,12 +299,12 @@ void CMT2119A_calcFrequency(uint32_t freq, CMT2119_freq_set_t* freq_set){
     if(prescale15) freq = freq + (freq>>2); //freq*1.5
     if(prescale2) freq = freq + freq; //freq*2
 
-    printf("VCO frequency: %d\r\n", freq);
+    //printf("VCO frequency: %d\r\n", freq);
 
     //frequency
     //could this calculation be made more efficient?
     uint32_t pll = (uint32_t)((double)freq*EQUIV_REF_FREQ_RECIP); //I don't think rounding is needed
-    printf("PLL multiplication factor: %u\r\n", pll);
+    //printf("PLL multiplication factor: %u\r\n", pll);
     freq_set->pll_low = pll & 0xfffe;              //lsb must always be zero. 
     uint16_t pllh = (pll >> 8) & 0xFF00;
     freq_set->pll_high = pllh;

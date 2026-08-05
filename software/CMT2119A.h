@@ -3,11 +3,6 @@
 #include <stdint.h>
 #include <ch32fun.h>
 #include <stdbool.h>
-#include "CMT2119A_TWI.h"
-#include <math.h>
-#include "ch32fun.h"
-#include "ch32v003hw.h"
-
 //based on https://github.com/g4eml/RP2040_Synth/blob/main/Arduino/RP2040Synth/CMT2119A.ino by G4EML
 
 typedef struct {
@@ -17,6 +12,11 @@ typedef struct {
     uint16_t pll_low;
     uint16_t pll_high;
 } CMT2119_freq_set_t;
+
+enum CMT2119A_edge_start{
+    EDGE_FALLING,
+    EDGE_RISING
+};
 
 enum CMT2119A_modulation{
     MOD_OOK,
@@ -43,7 +43,7 @@ typedef struct {
     enum CMT2119A_modulation modulation;
     enum CMT2119A_low_off_time off_time;
     uint16_t pa_ramp_time;
-    bool rising_edge_start;
+    enum CMT2119A_edge_start edge_start;
     bool invert_symbols;
     bool xo_current_boost;
 } CMT2119A_settings_t;
@@ -56,7 +56,7 @@ void CMT2119A_setPowerOut(int dbm, bool ook_en);
 void CMT2119A_setModulation(enum CMT2119A_modulation modulation);
 void CMT2119A_setLowOffTime(enum CMT2119A_low_off_time off_time);
 void CMT2119A_setPArampTime(uint16_t us);
-void CMT2119A_setRisingEdgeStart(bool rising);
+void CMT2119A_setEdgeStart(enum CMT2119A_edge_start edge_start);
 void CMT2119A_setSymbolInversion(bool inv);
 void CMT2119A_setCrystalCurrentBoost(bool boost);
 void CMT2119A_setGFSKrate(uint32_t bps);

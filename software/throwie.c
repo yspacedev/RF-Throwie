@@ -10,9 +10,7 @@
 //50*WPM is the number of units per minute (1/(50*WPM))*MS_PER_MINUTE
 #define MORSE_UNIT_MS ((60*1000)/(50*MORSE_WPM))
 
-#define TX_FREQ 432.1 //MHz
-
-const char* morse_string = "KI5ZHW TEST"; //replace with your own callsign or change TX_FREQ to an ISM band
+const char* morse_string = "CALLSIGN TEST"; //replace with your own callsign or change TX_FREQ to an ISM band
 
 //possibly rearrange to map better onto ascii
 const char* MORSE_ALPHABET[] = {
@@ -164,7 +162,7 @@ int main(){
 		.modulation = MOD_FSK,
 		.off_time = OFF_90MS,
 		.pa_ramp_time = 0,
-		.rising_edge_start = true,
+		.edge_start = EDGE_RISING,
 		.invert_symbols = false,
 		.xo_current_boost = false,
 	};
